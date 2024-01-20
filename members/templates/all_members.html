@@ -1,0 +1,33 @@
+{% extends "master.html" %}
+
+{% block title %}
+    My tennis club: List of all members
+{% endblock %}
+{% block content %}
+<h1>Members</h1>
+<!--<ul>-->
+<!--    {% for x in mymembers %}-->
+<!--    <li><a href="details/{{x.id}}" >{{ x.firstname }} {{ x.lastname }}</a></li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+    </tr>
+    {% for x in mymembers %}
+        <tr>
+            <td>{{ x.id }}</td>
+            <td>{{ x.firstname }}</td>
+            <td>{{ x.lastname }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<p>Return specfic column</p>
+{{ mymembers1 }}
+
+<p>Return specfic row</p>
+{{ mymembers2 }}
+<p>Back to HOME<a href="/"> Home</a></p>
+{% endblock %}

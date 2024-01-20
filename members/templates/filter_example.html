@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Filter Start</h1>
+    {% filter lower %}
+      <p>Have a great day!</p>
+    {% endfilter %}
+    <h3>The filter tag takes any of these keywords as parameter(s):</h3>
+    <p>For add filter</p>
+    {% for x in prices %}
+      <h5>The price is {{ x|add:"10" }} dollars.</h5>
+    {% endfor %}
+    {{ fruits|add:vegetables }}
+    {% for x in fruits %}
+      <h5>{{ x|add:"-CHECK" }}</h5>
+    {% endfor %}
+    <p>------------------------ Filter End ---------------------------</p>
+<p>for addslashes (The addslashes filter adds a slash \ character before any quotes.)</p>
+<p>{{ name|addslashes }}</p>
+<button onclick="alert('{{ name|addslashes }}')">Click me!</button>
+<p>--------------------------------------------------------------------------------------</p>
+<p>capfirst : Returns the first letter in uppercase.</p>
+<p>{{ animal|capfirst }}</p>
+<p>------------------------------------------------------------------------------------------</p>
+<p>center: Centers the value in the middle of a specified width.</p>
+<p>{{ name1|center:20 }}</p>
+<p>---------------------------------------------------------------------------------------------</p>
+<p>cut: Removes any specified character or phrases.</p>
+<p>{{ name2|cut:"gale" }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+    <p>default: Returns a specified value if the value is False/empty</p>
+    Values that evaluates to False are:
+    Empty Strings "" -> Any numeric 0->Any empty object [], (), {}, set(), range(0)->None -> False
+{% for x in colors %}
+  <h5>{{ x|default:"nocolor" }}</h5>
+{% endfor %}
+<p>--------------------------------------------------------------------------------------------</p>
+<p>default_if_none : The default_if_none filter allows you to specify a default value to use if the value is None.</p>
+{% for x in colors %}
+  <h5>{{ x|default_if_none:"nocolor" }}</h5>
+{% endfor %}
+<p>--------------------------------------------------------------------------------------------</p>
+The dictsort filter sorts a dictionary by the specified field. The dictsort filter sorts ascending.
+{% for x in cars|dictsort:"year" %}
+  <p>{{ x.year }} {{ x.brand }} {{ x.model }}.</p>
+{% endfor %}
+<p>--------------------------------------------------------------------------------------------</p>
+Sort the dictionary descending by year: Sorts a dictionary reversed, by the given value.
+{% for x in cars|dictsortreversed:"year" %}
+  <p>{{ x.year }} {{ x.brand }} {{ x.model }}.</p>
+{% endfor %}
+
+<p>--------------------------------------------------------------------------------------------</p>
+divisibleby: Returns True if the value can be divided by the specified number, otherwise it returns False.
+{% if totalsum|divisibleby:5 %}
+  <h5>Yes, it is!</h5>
+{% endif %}
+<p>--------------------------------------------------------------------------------------------</p>
+    Escapes HTML code from a string.
+    {% autoescape off %}
+      <p>{{ heading|escape }}</p>
+      <p>{{ heading }}</p>
+    {% endautoescape %}
+
+<p>--------------------------------------------------------------------------------------------</p>
+Escapes JavaScript code from a string.
+<h3>Without escapejs:</h3>
+<button onclick="alert('{{ var1 }}')">Click me</button>
+<h3>With escapejs:</h3>
+<button onclick="alert('{{ var1|escapejs }}')">Click me</button>
+<p>--------------------------------------------------------------------------------------------</p>
+filesizeformat : Display the file size in a more readable format:
+    <p>{{ size|filesizeformat }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+first: The first filter returns the first item of an object.
+For strings, the first filter returns the first character:
+    <p>{{ fruits|first }}</p>
+    <p>{{ firstname|first }}</p>
+
+<p>--------------------------------------------------------------------------------------------</p>
+    <b>floatformat</b><br>
+    Round a number to only two decimals: {{ mynumber|floatformat:2 }}
+    <p>{{ 7.122489|floatformat:2 }}</p>
+    <p>{{ 7.1|floatformat:2 }}</p>
+    <p>{{ 7|floatformat:2 }}</p>
+
+    If the argument value is a negative number, the value will be displayed with the specified number of decimals, only if the value has decimals:
+    <p>{{ 7.122489|floatformat:-2 }}</p>
+    <p>{{ 7.1|floatformat:-2 }}</p>
+    <p>{{ 7|floatformat:-2 }}</p>
+
+    You can add a g in the argument value to specify that the result should include a separator for each thousand:
+    <p>{{ mynumber1|floatformat:"2g" }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The get_digit filter returns the specified digit from a number, counting from the end of the number.
+   <p>{{ mynumber3|get_digit:2 }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>join</b> filter takes all items in an iterable and joins them into one string.
+A string must be specified as the separator.
+<p>join all items in a list into a string, using a hash character as separator:</p>
+    {{ fruits|join:"##" }}
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>json_script</b> filter converts an object, like a Python tuple, into a JSON object surrounded by script tags.
+    {{ cars|json_script:"mycars" }}
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>last</b> filter returns the last item of an object.
+<p>{{ fruits|last }}</p>
+<p>For strings, the last filter returns the last character:</p>
+<p>{{ firstname|last }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+<p>length</p>
+    <p>The length filter returns the number of items in an object.</p>
+    <p>{{ fruits|length }}</p>
+    <p>For strings, the length filter returns the number of characters:</p>
+    <p>{{ firstname|length }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+length_is :
+    The length_is filter returns True if the length of the object is the same as the specified number.
+    <p>{{ fruits|length_is:3 }}</p>
+This can be useful when you are dealing with if statements:
+    {% if firstname|length_is:6 %}
+      <p>Kundan</p>
+    {% endif %}
+
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>linebreaks</b> filter replaces line breaks with "br" and double line breaks with paragraph.
+    <h3>Without linebreaks filter:</h3>
+    {{ mytext }}
+    <h3>With linebreaks filter:</h3>
+
+    {{ mytext|linebreaks }}
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>linebreaksbr</b> filter replaces line breaks with br elements.<br>
+    original string: 'Hello\nmy name is Leo.\n\nI am a student.',
+    <h3>Without linebreaksbr filter:</h3>
+
+    {{ mytext }}
+
+    <h3>With linebreaksbr filter:</h3>
+
+    {{ mytext|linebreaksbr }}
+<p>--------------------------------------------------------------------------------------------</p>
+
+    The <b>linenumbers</b> filter adds a the line numbers before each line of a text.<br>
+     original string: 'Hello\nmy name is Leo.\n\nI am a student.',
+    <p>{{ mytext|linenumbers }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>ljust</b> filter places the value to the left in a field of the specified length.
+    <p>{{ firstname|ljust:20 }}</p>
+    <pre>{{ firstname|ljust:20 }} Refsnes</pre>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>lower</b> filter returns the value in all lower case letters.
+    <p>{{ firstname|lower }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>make_list</b> filter converts a value into a list.
+    <p>{{ firstname|make_list }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>phone2numeric</b> filter converts any letter in a phone number like into the actual numeric phone number.
+
+<p>E.g. "555-automobile" becomes 555-288662453.</p>
+
+<p>{{ phone|phone2numeric }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>pluralize</b> filter adds a 's' suffix if the value is not 1.
+    {% for x in arr %}
+      <p>You have {{ x }} life{{ x|pluralize }} left.</p>
+    {% endfor %}
+    {% for x in arr %}
+      <p>You have {{ x }} kiss{{ x|pluralize:'es' }} left.</p>
+    {% endfor %}
+    {% for x in arr %}
+      <p>You have {{ x }} butterfl{{ x|pluralize:'y,ies' }} left.</p>
+    {% endfor %}
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>random</b> filter returns a random item of an object.
+    <h5>My favorite fruit is {{ fruits|random }}</h5>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>rjust</b> filter places the value to the right in a field of the specified length.
+    <pre>King {{ firstname|rjust:20 }} Refsnes</pre>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>slice</b> filter returns the specified items from a list.<p>You can define the from (inlcuded) and to (not included) indexes.</p>
+    <p>If you use negative indexes, it means slicing from the end of the list, -1 refers to the last item, -2 refers to the second last item etc.</p>
+    <p>{{ fruits|slice:"1:4" }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>slugify</b> filter returns a text into one long word containing nothing but lower case ASCII characters and hyphens (-).
+    <p>{{ text|slugify }}</p>
+    '_ABC#@_123 What?,.%(5-4)-_-' <p>{{ '_ABC#@_123 What?,.%(5-4)-_-'|slugify }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>striptags</b> filter removes any HTML tags from the value.
+<h3>Without striptags filter:</h3>
+{{ mytext1 }}
+<h3>With striptags filter:</h3>
+{{ mytext1|striptags }}
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>time</b> filter formats and return the time from a datetime object.
+
+<p>You can specify the format by using these format characters:</p>
+
+g--->	Hour (1-12) </br>
+G--->	Hour (0-23) </br>
+h--->	Hour (01-12) </br>
+H--->	Hour (00-23) </br>
+i--->	Minutes (00-59) </br>
+s--->	Seconds (00-59) </br>
+u--->	Microseconds (000000-999999) </br>
+a--->	am/pm suffix (a.m. or p.m.) </br>
+A--->	AM/PM suffix (A.M. or P.M.) </br>
+f--->	Time, hour and minute, but minutes are left out if they are 0</br>
+P--->	Same as f, but also including a.m. or p.m. and:</br>
+If time is exactly "12:00 a.m." it returns "midnight".</br>
+If time is exactly "12:00 p.m." it returns "noon".</br>
+
+    <p>Current Time:-> {{ mydate|time }}</p>
+    <p>Current Time Hours(1-12)(g):-> {{ mydate|time:'g' }}</p>
+    <p>Current Time Hours(1-23)(G):-> {{ mydate|time:'G' }}</p>
+    <p>Current Time Hours(01-12)(h):-> {{ mydate|time:'h' }}</p>
+    <p>Current Time Hours(00-23)(H):-> {{ mydate|time:'H' }}</p>
+    <p>Current Time Minutes (00-59)(i):-> {{ mydate|time:'i' }}</p>
+    <p>Current Time Seconds (00-59)(s):-> {{ mydate|time:'s' }}</p>
+    <p>Current Time am/pm(a):-> {{ mydate|time:'a' }}</p>
+    <p>Current Time AM/PM(A):-> {{ mydate|time:'A' }}</p>
+    <p>Time, hour and minute, but minutes are left out if they are 0(f):-> {{ mydate|time:'f' }}</p>
+    <p>ame as f, but also including a.m. or p.m. and(P):-> {{ mydate|time:'P' }}</p>
+
+<p>--------------------------------------------------------------------------------------------</p>
+
+    The <b>timesince</b> filter returns the difference between two date times.
+    <p>{{ mybirthdate|timesince }}</p>
+    <p>You can also get the difference between two times, in hours and minutes:: {{ date1|timesince:date2 }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>timeuntil</b> filter returns the difference between two date times.
+    <p>{{ marslanding|timeuntil }}</p>
+    <p>{{ marslanding|timeuntil:moonlanding }}</p>
+    <p>{{ date11|timeuntil:date22 }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>title</b> filter returns the value with all words converted into having the first letter in upper case, and the rest of the word lower case.
+    <p>{{ mytext2|title }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>truncatechars</b> filter truncate the value if it is longer than the specified number of characters
+
+<p>If a value gets truncated, the value will add three dots (...) at the end of the string.</p>
+    <p>{{ mytext2|truncatechars:10 }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>truncatechars_html</b> filter truncate the value if it is longer than the specified number of characters.<br>
+The <b>truncatechars_html</b> filter will not count any HTML tags, but closes tags that are being started but not ended.<br>
+If a value gets truncated, the value will add three dots (...) at the end of the string.<br>
+    <p>{{ mytext3|truncatechars_html:10 }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+
+The <b>truncatewords</b> filter truncate the value if it is longer than the specified number of words<br>
+If a value gets truncated, the value will add three dots (...) at the end of the string.
+<p>{{ mytext2|truncatewords:3 }}</p>
+
+<p>--------------------------------------------------------------------------------------------</p>
+    The <b>truncatewords_html</b> filter truncate the value if it is longer than the specified number of words.<br>
+The <b>truncatewords_html</b> filter will not count any HTML tags, but closes tags that are being started but not ended.<br>
+If a value gets truncated, the value will add three dots (...) at the end of the string.<br>
+{{ mytext3|truncatewords_html:3 }}
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>unordered_list</b> filter converts an object into a HTML list.
+
+The start 'ul' and end '/ul' is not included, but if you have a list inside a list, the unordered_list filter will add proper 'ul' and '/ul' for the nested lists:
+    <ul>
+        {{ fruits|unordered_list }}
+    </ul>
+    <p>Convert nested Python lists into nested HTML lists</p>
+    <ul>
+        {{ food|unordered_list }}
+    </ul>
+<p>--------------------------------------------------------------------------------------------</p>
+The <b>upper</b> filter returns the value in all upper case letters.
+    <p>{{ firstname|upper }}</p>
+<p>--------------------------------------------------------------------------------------------</p>
+urlencod->URL encodes a string.
+<p>--------------------------------------------------------------------------------------------</p>
+urlize->Returns any URLs in a string as HTML links.
+<p>--------------------------------------------------------------------------------------------</p>
+urlizetrunc-->	Returns any URLs in a string as HTML links, but shortens the links into the specified number of characters.
+<p>--------------------------------------------------------------------------------------------</p>
+wordcount-->Returns the number of words in a text.
+<p>--------------------------------------------------------------------------------------------</p>
+wordwra->Wrap words at a specified number of characters.
+<p>--------------------------------------------------------------------------------------------</p>
+yesno->Converts Booleans values into specified values.
+<p>--------------------------------------------------------------------------------------------</p>
+
+<p>--------------------------------------------------------------------------------------------</p>
+
+<p>--------------------------------------------------------------------------------------------</p>
+
+<p>--------------------------------------------------------------------------------------------</p>
+
+<p>--------------------------------------------------------------------------------------------</p>
+
+<p>--------------------------------------------------------------------------------------------</p>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

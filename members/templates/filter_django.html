@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+   </head>
+   <body>
+   <center><h1>filter Template Tag</h1></center>
+    <h4>The filter tag takes any of these keywords as parameter(s):</h4>
+      <table border="1">
+         <tbody>
+            <tr>
+               <th>Keyword</th>
+               <th>Description</th>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_add.php">add</a></td>
+               <td>Adds a specified value.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_addslashes.php">addslashes</a></td>
+               <td>Adds a slash before any quote characters, to escape strings.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_capfirst.php">capfirst</a></td>
+               <td>Returns the first letter in uppercase.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_center.php">center</a></td>
+               <td>Centers the value in the middle of a specified width.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_cut.php">cut</a></td>
+               <td>Removes any specified character or phrases.</td>
+            </tr>
+            <tr>
+               <td>date</td>
+               <td>Returns dates in the specified format.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_default.php">default</a></td>
+               <td>Returns a specified value if the value is False.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_default_if_none.php">default_if_none</a></td>
+               <td>Returns a specified value if the value is None.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_dictsort.php">dictsort</a></td>
+               <td>Sorts a dictionary by the given value.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_dictsortreversed.php">dictsortreversed</a></td>
+               <td>Sorts a dictionary reversed, by the given value.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_divisibleby.php">divisibleby</a></td>
+               <td>Returns True if the value can be divided by the specified number, otherwise it returns False.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_escape.php">escape</a></td>
+               <td>Escapes HTML code from a string.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_escapejs.php">escapejs</a></td>
+               <td>Escapes JavaScript code from a string.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_filesizeformat.php">filesizeformat</a></td>
+               <td>Returns a number into a file size format.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_first.php">first</a></td>
+               <td>Returns the first item of an object (for Strings, the first character is
+                  returned).
+               </td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_floatformat.php">floatformat</a></td>
+               <td>Rounds floating numbers to a specified number of decimals, default one decimal.</td>
+            </tr>
+            <tr>
+               <td>force_escape</td>
+               <td>Escapes HTML code from a string.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_get_digit.php">get_digit</a></td>
+               <td>Returns a specific digit of a number.</td>
+            </tr>
+            <tr>
+               <td>iriencode</td>
+               <td>Convert an IRI into a URL friendly string.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_join.php">join</a></td>
+               <td>Returns the items of a list into a string.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_json_script.php">json_script</a></td>
+               <td>Returns an object into a JSON object surrounded by &lt;script&gt;&lt;/script&gt; tags. </td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_last.php">last</a></td>
+               <td>Returns the last item of an object (for Strings, the last character is
+                  returned).
+               </td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_length.php">length</a></td>
+               <td>Returns the number of items in an object, or the number of characters in a
+                  string.
+               </td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_length_is.php">length_is</a></td>
+               <td>Returns True if the length is the same as the specified number</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_linebreaks.php">linebreaks</a></td>
+               <td>Returns the text with &lt;br&gt; instead of line breaks, and &lt;p&gt; instead of more
+                  than one line break.
+               </td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_linebreaksbr.php">linebreaksbr</a></td>
+               <td>Returns the text with &lt;br&gt; instead of line breaks.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_linenumbers.php">linenumbers</a></td>
+               <td>Returns the text with line numbers for each line.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_ljust.php">ljust</a></td>
+               <td>Left aligns the value according to a specified width</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_lower.php">lower</a></td>
+               <td>Returns the text in lower case letters.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_make_list.php">make_list</a></td>
+               <td>Converts a value into a list object.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_phone2numeric.php">phone2numeric</a></td>
+               <td>Converts phone numbers with letters into numeric phone numbers.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_pluralize.php">pluralize</a></td>
+               <td>Adds a 's' at the end of a value if the specified numeric value is
+                  not 1.
+               </td>
+            </tr>
+            <tr>
+               <td>pprint</td>
+               <td>&nbsp;</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_random.php">random</a></td>
+               <td>Returns a random item of an object</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_rjust.php">rjust</a></td>
+               <td>Right aligns the value according to a specified width</td>
+            </tr>
+            <tr>
+               <td>safe</td>
+               <td>Marks that this text is safe and should not be HTML escaped.</td>
+            </tr>
+            <tr>
+               <td>safeseq</td>
+               <td>Marks each item of an object as safe and the item should not be HTML
+                  escaped.
+               </td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_slice.php">slice</a></td>
+               <td>Returns a specified slice of a text or object.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_slugify.php">slugify</a></td>
+               <td>Converts text into one long alphanumeric-lower-case word.</td>
+            </tr>
+            <tr>
+               <td>stringformat</td>
+               <td>Converts the value into a specified format.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_striptags.php">striptags</a></td>
+               <td>Removes HTML tags from a text.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_time.php">time</a></td>
+               <td>Returns a time in the specified format.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_timesince.php">timesince</a></td>
+               <td>Returns the difference between two datetimes.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_timeuntil.php">timeuntil</a></td>
+               <td>Returns the difference between two datetimes.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_title.php">title</a></td>
+               <td>Upper cases the first character of each word in a text, all other characters
+                  are converted to lower case.
+               </td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_truncatechars.php">truncatechars</a></td>
+               <td>Shortens a string into the specified number of characters.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_truncatechars_html.php">truncatechars_html</a></td>
+               <td>Shortens a string into the specified number of characters, not considering
+                  the length of any HTML tags.
+               </td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_truncatewords.php">truncatewords</a></td>
+               <td>Shortens a string into the specified number of words.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_truncatewords_html.php">truncatewords_html</a></td>
+               <td>Shortens a string into the specified number of words, not considering any
+                  HTML tags.
+               </td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_unordered_list.php">unordered_list</a></td>
+               <td>Returns the items of an object as an unordered HTML list.</td>
+            </tr>
+            <tr>
+               <td><a href="ref_filters_upper.php">upper</a></td>
+               <td>Returns the text in upper case letters.</td>
+            </tr>
+            <tr>
+               <td>urlencode</td>
+               <td>URL encodes a string.</td>
+            </tr>
+            <tr>
+               <td>urlize</td>
+               <td>Returns any URLs in a string as HTML links.</td>
+            </tr>
+            <tr>
+               <td>urlizetrunc</td>
+               <td>Returns any URLs in a string as HTML links, but shortens the links into the
+                  specified number of characters.
+               </td>
+            </tr>
+            <tr>
+               <td>wordcount</td>
+               <td>Returns the number of words in a text.</td>
+            </tr>
+            <tr>
+               <td>wordwrap</td>
+               <td>Wrap words at a specified number of characters.</td>
+            </tr>
+            <tr>
+               <td>yesno</td>
+               <td>Converts Booleans values into specified values.</td>
+            </tr>
+            <tr>
+               <td>i18n</td>
+               <td>&nbsp;</td>
+            </tr>
+            <tr>
+               <td>l10n</td>
+               <td>&nbsp;</td>
+            </tr>
+            <tr>
+               <td>tz</td>
+               <td>&nbsp;</td>
+            </tr>
+         </tbody>
+      </table>
+   </body>
+</html>

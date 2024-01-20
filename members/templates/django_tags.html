@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>-------------------------------------------------------------------------------------------</p>
+The <b>firstof</b> tag returns the first argument that is not an empty variable.<br>
+Empty variables can be an empty string "", or a zero number 0, or a boolean false.<br>
+<p>{% firstof x y z %}</p>
+<p>-------------------------------------------------------------------------------------------</p>
+The <b>for</b> tag allows you to iterate over items in an object.<br>
+Objects can be array-like objects like a Python list or object-like objects like a Python dictionary:
+<ul>
+  {% for x in fruits %}
+    <li>{{ x }}</li>
+  {% endfor %}
+</ul>
+
+{% for x, y in mycar.items %}
+  <p>The {{ x }} is {{ y }}.</p>
+{% endfor %}
+<p><b>forloop.counter</b>: The current iteration, starting at 1.</p>
+<ul>
+  {% for x in fruits %}
+    <li>{{ forloop.counter }}</li>
+  {% endfor %}
+</ul>
+<p><b>forloop.counter0</b>:The current iteration, starting at 0.</p>
+<ul>
+  {% for x in fruits %}
+    <li>{{ forloop.counter0 }}</li>
+  {% endfor %}
+</ul>
+<p><b>forloop.first</b>: Check if this iteration is the first iteration.</p>
+<ul>
+  {% for x in fruits %}
+    <li
+    {% if forloop.first %}
+      style='background-color:lightblue;'
+    {% endif %}
+    >{{ x }}</li>
+  {% endfor %}
+</ul>
+<p><b>forloop.last</b>:Check if this iteration is the last iteration.</p>
+<ul>
+  {% for x in fruits %}
+    <li
+    {% if forloop.last %}
+      style='background-color:lightblue;'
+    {% endif %}
+    >{{ x }}</li>
+  {% endfor %}
+</ul>
+<p><b>forloop.parentloop</b>: Refers to the parent loop.</p>
+<ul>
+  {% for x in cars %}
+    <li>{{ x }}:
+      <ul>
+        {% for y in colors %}
+          <li>
+            {{ forloop.parentloop.counter }}
+            {{ y }}
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+<p><b>forloop.revcounter</b>:The current iteration, counting backwords, ending at 1.</p>
+<ul>
+  {% for x in fruits %}
+    <li>{{ forloop.revcounter }}</li>
+  {% endfor %}
+</ul>
+<p><b>forloop.revcounter0</b>:The current iteration, counting backwords, ending at 0.</p>
+<ul>
+  {% for x in fruits %}
+    <li>{{ forloop.revcounter0 }}</li>
+  {% endfor %}
+</ul>
+<p>-------------------------------------------------------------------------------------------</p>
+<h4>if Template Tag</h4>
+{% if myvar == 1 %}
+  <p>Hello!</p>
+{% endif %}
+
+{% if myvar == 1 %}
+  <p>Hello!</p>
+{% else %}
+  <p>Greetings!</p>
+{% endif %}
+
+<p><b>Nested if else</b></p>
+{% if myvar == 1 %}
+  <p>Hello!</p>
+{% elif myvar == 2 %}
+  <p>Welcome!</p>
+{% else %}
+  <p>Greetings!</p>
+{% endif %}
+
+<p><b>==: is equal to</b></p>
+{% if myvar == 1 %}
+  <p>Hello!</p>
+{% endif %}
+
+<p><b>!= : is not equal to</b></p>
+{% if myvar != 30 %}
+  <p>Hello!</p>
+{% endif %}
+
+<p><b>< : is less than</b></p>
+{% if myvar < 10 %}
+  <p>Hello!</p>
+{% endif %}
+<p><b><=:is less than, or equal to</b></p>
+<p><b>>:	is greater than</b></p>
+<p><b>>=: is greater than, or equal to</b></p>
+<p><b>and:	condition1 and condition2 must be true</b></p>
+<p><b>or:	condition1 or condition2 must be true</b></p>
+<p><b>in: 	an item must be present in an object</b></p>
+<p><b>is: is the same value as</b></p>
+<p><b>is not: is not the same value as</b></p>
+<p><b>not in: 	is not in</b></p>
+<p>-------------------------------------------------------------------------------------------</p>
+The <b>ifchanged</b> tag allows you to check a value in a loop and output a code if the value has changed since the last iteration.
+{% for x in cars1 %}
+  {% ifchanged x.brand %}
+    <h1>{{ x.brand }}:</h1>
+  {% endifchanged %}
+  <p>{{ x.model }}, {{ x.year }}</p>
+{% endfor %}
+<p>Loop through a list and write different messages if the value has changed or not:</p>
+{% for x in mylist %}
+  {% ifchanged %}
+    <p>New value: {{ x }}</p>
+  {% else %}
+    <p>Same value: {{ x }}</p>
+  {% endifchanged %}
+{% endfor %}
+<p>-------------------------------------------------------------------------------------------</p>
+<p>Insert 50 words of random text:</p>
+{% lorem 50 w %}
+{% lorem 5 p %}
+<p>-------------------------------------------------------------------------------------------</p>
+The <b>now</b> tag inserts the current date and/or time, according to the specified format.
+<p>{% now "Y-m-d" %}</p>
+<p>{% now "Y-m-d g:i:s" %}</p>
+<p>Year, 2 digits (00-99)(y):-> {% now "y" %}</p>
+<p>Year, 4 digits (0001-9999)(Y):-> {% now "Y" %}</p>
+<p>Returns whether now is a leap year or not (True-False)(L):-> {% now "L" %}</p>
+<p>Month, 2 digits (01-12)(m):-> {% now "m" %}</p>
+<p>Month, 1 or 2 digits (1-12)(n):-> {% now "n" %}</p>
+<p>Month, 3 letters (Jan-Dec)(M):-> {% now "M" %}</p>
+<p>Month, 3 lower case letters (jan-dec)(b):-> {% now "b" %}</p>
+<p>Month, text in local language(E): {% now "E" %}</p>
+<p>Month, full text (January-December)(F):-> {%now "F" %}</p>
+<p>Month, max 5 letters, if month name has more, use proper abbreviation (Jan. Dec.)(N): {% now "N" %}</p>
+<p>Number of days in month (28-31)(t):- {% now "t" %}</p>
+<p>Day of month (01-31)(d): {% now "d" %}</p>
+<p>Day of week (Sun-Sat)(D): {% now "D" %}</p>
+<p>Day of month (1-31)(j): {% now "j" %}</p>
+<p>Day of week (Sunday-Saturday)(l): {% now "l" %}</p>
+<p>	Ending of number (st-nd-rd-th)(S): {% now "S" %}</p>
+<p>Day of week (0-6)(w): {% now "w" %}</p>
+<p>Day of year (1-366)(z): {% now "z" %}</p>
+<p>Week of year (ISO-8601) (1-53)(W): {% now "W" %}</p>
+<p>Name of time zone, like (GMT) or (UTC)(e): {% now "e" %}</p>
+<p>-------------------------------------------------------------------------------------------</p>
+The <b>regroup</b> tag returns a new object grouped by a specified value.
+{% regroup cars1 by brand as newlist %}
+{{ newlist }}
+{% for x in newlist %}
+  <h1>{{ x.grouper }}</h1>
+  {% for y in x.list %}
+    <p>{{ y.model }}: {{ y.year }}</p>
+  {% endfor %}
+{% endfor %}
+<p>-------------------------------------------------------------------------------------------</p>
+The <b>resetcycle</b> tag is used inside a cycle, and resets the cycle, making it start at the beginning.
+It does not reset the loop, only the cycle.
+<ul>
+  {% for x in fruits %}
+    <li style='color:{% cycle 'red' 'green' 'blue' 'pink' %}'>
+      {{ x }}
+    </li>
+    {% if x == "Banana" %}
+      {% resetcycle %}
+    {% endif %}
+  {% endfor %}
+</ul>
+<ul>
+{% for x in fruits %}
+  <li style='
+      color:{% cycle 'red' 'green' 'blue' 'pink' as mycolor %};
+      background:{% cycle 'grey' 'beige' 'red' 'purple' as mybg %};
+    '>
+    {{ x }}
+  </li>
+  {% if x == "Banana" %}
+    {% resetcycle mybg %}
+  {% endif %}
+{% endfor %}
+</ul>
+<p>-------------------------------------------------------------------------------------------</p>
+The <b>spaceless</b> tag is used to remove any space between tags, in the code.<br>
+The <b>spaceless</b> tag removes any whitespaces, new lines and tabs.
+{% spaceless %}
+  <ul>
+    {% for x in fruits %}
+      <li>{{ x }}</li>
+    {% endfor %}
+  </ul>
+{% endspaceless %}
+<p>-------------------------------------------------------------------------------------------</p>
+The <b>templatetag</b> tag is used to display characters that are normally used to perform Django tasks.<br>
+Each tag character, like {{, {% and {#, has their own name, see below.
+<p>
+  {% templatetag openblock %}
+    extends
+  {% templatetag closeblock %}
+</p>
+<p>-------------------------------------------------------------------------------------------</p>
+The <b>with</b> tag is used to create variables in Django templates.
+{% with firstname="Kundan" %}
+  <h1>Hello {{ firstname }}</h1>
+{% endwith %}
+
+{% with myvar=fruits|length %}
+  {% for x in fruits %}
+     <p>{{ x }} is one of {{ myvar }} fruits.</p>
+  {% endfor %}
+{% endwith %}
+<p>-------------------------------------------------------------------------------------------</p>
+
+<p>-------------------------------------------------------------------------------------------</p>
+
+<p>-------------------------------------------------------------------------------------------</p>
+
+</body>
+</html>
+
